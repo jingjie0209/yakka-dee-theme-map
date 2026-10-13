@@ -10,4 +10,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 ## Product Goal
 
-- The primary user goal is direct curriculum lookup: choosing a topic category must immediately show the exact season and episode for every matching Yakka Dee video, together with English/Chinese topic labels and the original filename.
+- The primary user goal is cross-cartoon curriculum lookup: choosing a topic must immediately show matching content from Didi's Day, Yakka Dee, Wow English, and Big Muzzy, while hiding cartoons with no match. Preserve episode/Unit position, vocabulary focus, and core phrase information.
