@@ -1,10 +1,12 @@
 import yakkaCatalog from "./data.json";
+import littleFoxCatalog from "./littlefox-data.json";
 
 export const shows = [
   { id: "didi", name: "Didi's Day", zh: "迪迪狗的一天", age: "约 3 岁+", count: 31, tone: "didi" },
   { id: "yakka", name: "Yakka Dee", zh: "亚克迪", age: "约 2–5 岁", count: 155, tone: "yakka" },
   { id: "wow", name: "Wow English", zh: "Wow English", age: "约 3–7 岁", count: null, tone: "wow" },
   { id: "muzzy", name: "Big Muzzy", zh: "玛泽的故事", age: "约 4 岁+", count: 15, tone: "muzzy" },
+  { id: "littlefox", name: "Little Fox", zh: "小狐狸分级动画", age: "L1–L7", count: 930, summary: "L1–L7 · 930视频 · 1006条索引", tone: "littlefox" },
 ];
 
 export const themeGroups = [
@@ -22,6 +24,8 @@ export const themes = [
   { id: "love-family", group: "social", label: "家庭与关爱", en: "Family & Love", note: "家庭成员、I love you" },
   { id: "help-likes", group: "social", label: "帮助与喜好", en: "Help & Likes", note: "Can I help? I like / don't like" },
   { id: "ownership", group: "social", label: "拥有与所属", en: "Have / His / Her", note: "I've got…、his、her" },
+  { id: "friendship", group: "social", label: "朋友与合作", en: "Friendship & Teamwork", note: "交朋友、互相帮助、合作解决问题" },
+  { id: "values", group: "social", label: "成长与品格", en: "Values & Growth", note: "勇气、诚实、责任、分享与成长" },
 
   { id: "routine", group: "daily", label: "日常作息", en: "Daily Routine", note: "早起、早餐、午餐、出发与生活流程" },
   { id: "hygiene-health", group: "daily", label: "卫生与健康", en: "Hygiene & Health", note: "刷牙、洗手、身体不适" },
@@ -43,6 +47,7 @@ export const themes = [
   { id: "describing", group: "thinking", label: "形容与对比", en: "Describing", note: "big/small、long/short、pretty/handsome" },
   { id: "senses", group: "thinking", label: "味道与气味", en: "Taste & Smell", note: "yummy/yucky、smells good/bad" },
   { id: "questions", group: "thinking", label: "提问与因果", en: "Why & Because", note: "Why…? Because…" },
+  { id: "science-space", group: "thinking", label: "科学与太空", en: "Science & Space", note: "科学发现、机器人、星球、宇宙和太空冒险" },
 
   { id: "farm-pets", group: "animals", label: "农场动物与宠物", en: "Farm & Pets", note: "宠物、家禽和农场动物" },
   { id: "insects", group: "animals", label: "昆虫与小动物", en: "Insects & Small Animals", note: "昆虫、虫类和小型动物" },
@@ -58,6 +63,7 @@ export const themes = [
   { id: "music", group: "words", label: "音乐与乐器", en: "Music", note: "乐器和音乐活动" },
   { id: "phonics", group: "words", label: "字母与自然拼读", en: "Phonics", note: "A–Z 字母音" },
   { id: "fantasy", group: "words", label: "奇幻角色与冒险", en: "Fantasy", note: "童话、神话、科幻和冒险" },
+  { id: "classic-stories", group: "words", label: "经典故事", en: "Classic Stories", note: "经典文学、童话名著和传统故事" },
 ];
 
 const didiSeed = [
@@ -196,4 +202,24 @@ const yakkaEntries = yakkaCatalog.map((row) => ({
   title:`${row.title} · ${row.zh}`, subtitle:row.subcategory, focus:row.title, phrases:"核心词汇", themeIds:yakkaThemes(row), source:row.filename,
 }));
 
-export const entries = [...didiEntries, ...yakkaEntries, ...wowEntries, ...muzzyEntries];
+const themeLabelById = Object.fromEntries(themes.map((theme) => [theme.id, theme.label]));
+
+const littleFoxEntries = littleFoxCatalog.map((row) => ({
+  id: row.id,
+  show: "littlefox",
+  episode: row.episode,
+  level: row.level,
+  series: row.series,
+  availability: row.availability,
+  position: `${row.level} · ${row.series} · 第${row.episode}集`,
+  title: row.title,
+  subtitle: `${row.seriesZh} · ${row.series}`,
+  focus: row.themeIds.map((id) => themeLabelById[id]).filter(Boolean).join(" · "),
+  phrases: row.availability === "video" ? "MP4 视频可用" : "仅识别到字幕文件（未发现 MP4）",
+  themeIds: row.themeIds,
+  source: row.source,
+  href: "https://pan.baidu.com/s/1_nqVgy4SKDoz1yAt4c35gQ?pwd=nyne",
+  hrefLabel: "打开小狐狸网盘分享 ↗",
+}));
+
+export const entries = [...didiEntries, ...yakkaEntries, ...wowEntries, ...muzzyEntries, ...littleFoxEntries];

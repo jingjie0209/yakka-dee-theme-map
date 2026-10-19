@@ -10,4 +10,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 ## Product Goal
 
-- The primary user goal is cross-cartoon curriculum lookup: choosing a topic must immediately show matching content from Didi's Day, Yakka Dee, Wow English, and Big Muzzy, while hiding cartoons with no match. Preserve episode/Unit position, vocabulary focus, and core phrase information.
+- The primary user goal is cross-cartoon curriculum lookup: choosing a topic must immediately show matching content from Didi's Day, Yakka Dee, Wow English, Big Muzzy, and Little Fox, while hiding cartoons with no match. Preserve episode/Unit/level/series position, vocabulary focus, core phrase information, and honest resource availability. For Little Fox, never present subtitle-only or missing inventory entries as available MP4 videos.
