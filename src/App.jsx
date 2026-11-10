@@ -127,11 +127,6 @@ export function App() {
                     <span className="entry-position">{row.position}</span>
                     <h4>{row.title}</h4>
                     <p className="entry-subtitle">{row.subtitle}</p>
-                    <dl>
-                      <div><dt>词汇 / 重点</dt><dd>{row.focus}</dd></div>
-                      <div><dt>短句 / 范围 / 状态</dt><dd>{row.phrases}</dd></div>
-                    </dl>
-                    <span className="entry-action">查看详情 →</span>
                   </button>
                 ))}
               </div>
