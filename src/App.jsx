@@ -121,14 +121,21 @@ export function App() {
                 <div><span className="show-dot"/><div><p>{show.zh}</p><h3>{show.name}</h3></div></div>
                 <b>{rows.length} 条匹配</b>
               </div>
-              <div className="entry-grid">
-                {(expandedShows[show.id] || rows.length <= 24 ? rows : rows.slice(0, 24)).map((row) => (
-                  <button className="entry-card" key={row.id} onClick={() => setSelected(row)}>
-                    <span className="entry-position">{row.position}</span>
-                    <h4>{row.title}</h4>
-                    <p className="entry-subtitle">{row.subtitle}</p>
-                  </button>
-                ))}
+              <div className="entry-table-wrap">
+                <table className="entry-table">
+                  <thead>
+                    <tr><th scope="col">季集 / 位置</th><th scope="col">内容</th><th scope="col">分类 / 系列</th></tr>
+                  </thead>
+                  <tbody>
+                    {(expandedShows[show.id] || rows.length <= 24 ? rows : rows.slice(0, 24)).map((row) => (
+                      <tr key={row.id} onClick={() => setSelected(row)}>
+                        <td><span className="table-position">{row.position}</span></td>
+                        <td><button className="table-title" onClick={(event) => { event.stopPropagation(); setSelected(row); }}>{row.title}</button></td>
+                        <td className="table-subtitle">{row.subtitle}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
               {rows.length > 24 && <button className="show-more" onClick={() => setExpandedShows((current) => ({ ...current, [show.id]: !current[show.id] }))}>
                 {expandedShows[show.id] ? "收起" : `展开全部 ${rows.length} 条`}
