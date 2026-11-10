@@ -38,6 +38,8 @@ export function App() {
 
   function chooseTheme(id) {
     setActiveTheme(id);
+    setActiveShow("all");
+    setQuery("");
     setSelected(null);
     setExpandedShows({});
     document.getElementById("results")?.scrollIntoView({ behavior: "smooth", block: "start" });
