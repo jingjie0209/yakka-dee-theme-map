@@ -60,16 +60,6 @@ export function App() {
           <p className="lead">点击一个主题，直接查看 <strong>Didi's Day、Yakka Dee、Wow English、Big Muzzy、Little Fox</strong> 中匹配的集数、主题重点、核心短句和资源状态；没有对应内容的动画会自动隐藏。</p>
         </div>
 
-        <div className="show-overview" aria-label="动画概览">
-          {shows.map((show) => (
-            <button key={show.id} className={`show-summary ${show.tone} ${activeShow === show.id ? "active" : ""}`} onClick={() => setActiveShow(activeShow === show.id ? "all" : show.id)}>
-              <span className="show-dot" />
-              <b>{show.name}</b>
-              <small>{show.zh} · {show.summary || `${show.age}${show.count ? ` · ${show.count}集` : ""}`}</small>
-            </button>
-          ))}
-        </div>
-
         <label className="search-wrap">
           <span className="search-icon" aria-hidden="true">⌕</span>
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索关键词或句型，如：weather、I like、动物、方位…" aria-label="搜索主题、词汇或句型" />
