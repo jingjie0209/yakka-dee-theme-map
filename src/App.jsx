@@ -55,9 +55,9 @@ export function App() {
         <div className="hero-copy">
           <div>
             <p className="hero-kicker">低幼英语动画横向检索</p>
-            <h1>5 部动画<br/>主题分类地图</h1>
+            <h1>5 部动画 主题分类地图</h1>
           </div>
-          <p className="lead">点击一个主题，直接查看 <strong>Didi's Day、Yakka Dee、Wow English、Big Muzzy、Little Fox</strong> 中匹配的集数、主题重点、核心短句和资源状态；没有对应内容的动画会自动隐藏。</p>
+          <p className="lead">动画名称：<strong>Didi's Day、Yakka Dee、Wow English、Big Muzzy、Little Fox</strong></p>
         </div>
 
         <label className="search-wrap">
